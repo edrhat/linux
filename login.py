@@ -1,4 +1,6 @@
 from tkinter import *
+import DataBase
+from tkinter import messagebox
 
 class Tela:
 
@@ -63,12 +65,34 @@ class Tela:
         self.bt_registrar["font"] = ("Lucida", "19")
         self.bt_registrar.config(bg="darkgreen", foreground="white")   
         self.bt_registrar.place(x=350,y=290, width=180)
+        self.bt_registrar.bind("<Button-1>", self.registrar_usuario)
 
         self.bt_voltar = Button(janela, text="Voltar")
         self.bt_voltar["font"] = ("Lucida", "14")
         self.bt_voltar.config(bg="black", foreground="white")   
         self.bt_voltar.place(x=5,y=410, width=130)
         self.bt_voltar.bind("<Button-1>", self.voltar)
+
+    def registrar_usuario(self, event):
+
+        u = self.usuarioE.get()
+        s = self.senhaE.get()
+
+        if(u) == "" or (s) == "":
+            self.usuarioE.config(bg="#FF6347")
+            self.senhaE.config(bg="#FF6347")
+            messagebox.showwarning("Dados inválidos", "Nenhum campo pode ficar em branco.")
+            self.senhaE.config(bg="grey")
+            self.usuarioE.config(bg="grey")
+            
+        else:
+            DataBase.cursor.execute("""
+            INSERT INTO Users(Usuario, Senha) VALUES(?,?)
+            """, (u,s))
+            messagebox.showinfo("Dados registrados", "Conta criada com sucesso.")
+            
+            
+            
 
     def voltar(self, event):
 
