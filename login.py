@@ -43,6 +43,7 @@ class Tela:
         self.bt_acessar["font"] = ("Lucida", "19")
         self.bt_acessar.config(bg="#1C1C1C", foreground="white")
         self.bt_acessar.place(x=350,y=290, width=180)
+        self.bt_acessar.bind("<Button-1>", self.logar)
 
         self.bt_criar = Button(janela, text="Criar uma nova conta")
         self.bt_criar["font"] = ("Lucida", "19")
@@ -50,6 +51,34 @@ class Tela:
         self.bt_criar.place(x=270,y=380, width=320)
         self.bt_criar.bind("<Button-1>", self.criar_conta)
 
+    def logar(self, event):
+
+        u = self.usuarioE.get()
+        s = self.senhaE.get()
+
+        DataBase.cursor.execute("""
+        SELECT * FROM Users
+        WHERE Usuario = ? and Senha = ?
+        """, [u, s])
+
+        verifica = DataBase.cursor.fetchone()
+
+        try:
+            if(u in verifica) and (s in verifica):
+
+                self.senhaE.delete(0, "end")
+                self.usuarioE.delete(0, "end")
+                janela2 = Tk()
+            
+                janela2.mainloop()
+
+                
+        except:
+            
+            messagebox.showerror("Erro ao acessar", "Usuário ou senha inválidos.")
+            self.senhaE.delete(0, "end")
+            self.usuarioE.delete(0, "end")
+        
     def criar_conta(self, event):
 
         self.lb_usuario.config(text="Novo usuário:")
@@ -107,9 +136,13 @@ class Tela:
                 """, (u,s))
 
                 DataBase.con.commit()
+                self.usuarioE.config(bg="#00FA9A")
+                self.senhaE.config(bg="#00FA9A")
                 messagebox.showinfo("Dados registrados", "Conta criada com sucesso.")
                 self.usuarioE.delete(0, "end")
                 self.senhaE.delete(0, "end")
+                self.usuarioE.config(bg="grey")
+                self.senhaE.config(bg="grey")
             
            
             
@@ -129,6 +162,9 @@ class Tela:
         
         self.bt_acessar.place(x=350,y=290, width=180)
         self.bt_criar.place(x=270,y=380, width=320)
+
+        self.senhaE.delete(0, "end")
+        self.usuarioE.delete(0, "end")
         
 
         
