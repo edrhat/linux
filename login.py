@@ -86,12 +86,32 @@ class Tela:
             self.usuarioE.config(bg="grey")
             
         else:
+
             DataBase.cursor.execute("""
-            INSERT INTO Users(Usuario, Senha) VALUES(?,?)
-            """, (u,s))
-            messagebox.showinfo("Dados registrados", "Conta criada com sucesso.")
+                SELECT * FROM Users
+                WHERE Usuario == ?
+                """, [u])
+
+            try:
+                
+                consulta = DataBase.cursor.fetchone()    
+                if(u in consulta):
+                    messagebox.showerror("Dados existentes", "Esse nome de usuário já está sendo utilizado.")
+                    self.usuarioE.delete(0, "end")
+
+            except:
+                
+                
+                DataBase.cursor.execute("""
+                INSERT INTO Users(Usuario, Senha) VALUES(?,?)
+                """, (u,s))
+
+                DataBase.con.commit()
+                messagebox.showinfo("Dados registrados", "Conta criada com sucesso.")
+                self.usuarioE.delete(0, "end")
+                self.senhaE.delete(0, "end")
             
-            
+           
             
 
     def voltar(self, event):
