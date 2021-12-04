@@ -110,7 +110,7 @@ class Tela:
             self.bt_enter["font"] = ("Lucida console", "18")
             self.bt_enter.config(bg="green", foreground="white")
             self.bt_enter.place(x=865, y=10, width=30, height=30)
-            #self.bt_enter.bind("<Button-1>", self.comandos)
+            self.bt_enter.bind("<Button-1>", self.comando1)
 
                 
             janela.config(bg="black")
@@ -119,7 +119,241 @@ class Tela:
             janela.title("Debian Server")
             janela.mainloop()
 
-     
+    def comando1(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "cd /":
+            #messagebox.showinfo("Comando correto", "ORGULHO DA PROFISSON.")
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Crie um diretório com o nome de\n\n 'Hardware'")
+            self.p1.config(bg="#1C1C1C", foreground="yellow")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=100, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando2)
+
+    def comando2(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "mkdir Hardware":
+            #messagebox.showinfo("Comando correto", "CONTINUE ASSIM.")
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Acesse o diretório 'Hardware'")
+            self.p1.config(bg="#1C1C1C", foreground="limegreen")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=100, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando3)
+
+    def comando3(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "cd Hardware":
+            #messagebox.showinfo("Comando correto", "DESSE JEITO NEM A NASA AGUENTA.")
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Liste os  arquivos e diretórios.")
+            self.p1.config(bg="#1C1C1C", foreground="lightblue")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=100, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando4)
+
+    
+
+    def comando4(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "ls":
+            #messagebox.showinfo("Comando correto", "ESTÃO DIZENDO QUE ZUCKERBERG É UM BEBEZINHO PERTO DE VOCÊ.")
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Crie um arquivo de texto com \n\n o nome de microcamp")
+            self.p1.config(bg="#1C1C1C", foreground="brown")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=100, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando5)
+
+    def comando5(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "touch microcamp.txt":
+            #messagebox.showinfo("Comando correto", "OS INTEGRANTES DO 'ANONYMOUS' GRITARAM VIIXIIIII.")
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Exclua o arquivo microcamp.txt")
+            self.p1.config(bg="#1C1C1C", foreground="purple")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=100, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando6)
+
+    def comando6(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "rm microcamp.txt":
+            #messagebox.showinfo("Comando correto", "E JESUS ORDENOU: ABRAM-SE OS TERMINAIS.")
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Volte um diretório")
+            self.p1.config(bg="#1C1C1C", foreground="pink")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=100, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando7)
+
+    def comando7(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "cd ..":
+            #messagebox.showinfo("Comando correto", "O PENTÁGONO ESTÁ DE OLHO.")
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Exclua o diretório 'Hardware'")
+            self.p1.config(bg="#1C1C1C", foreground="lightgrey")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=100, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando8)
+
+    def comando8(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "rm -r Hardware":
+            #messagebox.showinfo("Comando correto", "O PENTÁGONO ESTÁ DE OLHO.")
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Crie um usuário com o nome de 'suporte'")
+            self.p1.config(bg="#1C1C1C", foreground="red")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=10, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando9)
+
+    def comando9(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "adduser suporte":
+            messagebox.showinfo("Comando correto", "Usuário criado com sucesso.")
+          
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Logue com o usuário 'suporte'")
+            self.p1.config(bg="#1C1C1C", foreground="lightgrey")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=10, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando10)
+
+    def comando10(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "su suporte":
+            #messagebox.showinfo("Comando correto", "Logado como 'suporte'")
+
+            self.lb.place_forget()
+            self.lb = Label(janela, text="suporte@debian:~$")
+            self.lb["font"] = ("Lucida console", "18")
+            self.lb.config(bg="black", foreground="lightblue")
+            self.lb.place(x=5, y=10)
+
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Acesse a pasta pessoal do usuário \n\n'suporte'")
+            self.p1.config(bg="#1C1C1C", foreground="lightgrey")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=10, y=300)
+
+            self.linuxE.place_forget()
+            self.linuxE = Entry(janela)
+            self.linuxE["font"] = ("Lucida console", "18")
+            self.linuxE.config(bg="black", foreground="limegreen")
+            self.linuxE.place(x=320, y=10, width=500)
+            
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando11)
+
+    def comando11(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "cd /home/suporte":
+            #messagebox.showinfo("Comando correto", "Logado como 'suporte'")
+
+            self.lb.place_forget()
+            self.lb = Label(janela, text="suporte@debian:/home/suporte")
+            self.lb["font"] = ("Lucida console", "18")
+            self.lb.config(bg="black", foreground="lightblue")
+            self.lb.place(x=5, y=10)
+
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Acesse a pasta pessoal do usuário \n\n'suporte'")
+            self.p1.config(bg="#1C1C1C", foreground="lightgrey")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=40, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando9)
+
+
+  
+
 
     
         
