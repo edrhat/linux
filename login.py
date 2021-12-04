@@ -63,50 +63,63 @@ class Tela:
 
         verifica = DataBase.cursor.fetchone()
 
-        try:
-            if(u in verifica) and (s in verifica):
+        
+        if(u in verifica) and (s in verifica):
 
-                self.senhaE.delete(0, "end")
-                self.usuarioE.delete(0, "end")
-                janela2 = Tk()
 
-                self.lb = Label(janela2, text="root@debian:~$")
-                self.lb["font"] = ("Lucida console", "18")
-                self.lb.config(bg="black", foreground="white")
-                self.lb.place(x=5, y=10)
+            self.img.place_forget()
 
-                self.linuxE = Entry(janela2)
-                self.linuxE["font"] = ("Lucida console", "18")
-                self.linuxE.config(bg="black", foreground="limegreen")
-                self.linuxE.place(x=220, y=10, width=640)
-
-                self.p1 = Label(janela2, text="Digite o comando para ir \n\npara a raiz do sistema")
-                self.p1["font"] = ("Lucida console", "27")
-                self.p1.config(bg="#1C1C1C", foreground="RED")
-                self.p1.place(x=160, y=300)
-
-                
-
-                self.bt_enter = Button(janela2, text=">")
-                self.bt_enter["font"] = ("Lucida console", "18")
-                self.bt_enter.config(bg="green", foreground="white")
-                self.bt_enter.place(x=865, y=10, width=30, height=30)
-                self.bt_enter.bind("<Button-1>", self.comandos)
-
-                
-                janela2.config(bg="black")
-                janela2.geometry("900x450+200+100")
-                janela2.resizable(width=False, height=False)
-                janela2.mainloop()
-
-                
-
-                
-        except:
             
-            messagebox.showerror("Erro ao acessar", "Usuário ou senha inválidos.")
-            self.senhaE.delete(0, "end")
-            self.usuarioE.delete(0, "end")
+            
+            self.lb_usuario.place_forget()
+
+        
+            self.usuarioE.place_forget()
+
+        
+            self.lb_senha.place_forget()
+
+        
+            self.senhaE.place_forget()
+
+        
+            self.bt_acessar.place_forget()
+        
+
+           
+            self.bt_criar.place_forget()
+
+            self.lb = Label(janela, text="root@debian:~$")
+            self.lb["font"] = ("Lucida console", "18")
+            self.lb.config(bg="black", foreground="white")
+            self.lb.place(x=5, y=10)
+
+            self.linuxE = Entry(janela)
+            self.linuxE["font"] = ("Lucida console", "18")
+            self.linuxE.config(bg="black", foreground="limegreen")
+            self.linuxE.place(x=220, y=10, width=640)
+
+            self.p1 = Label(janela, text="Digite o comando para ir \n\npara a raiz do sistema")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.config(bg="#1C1C1C", foreground="RED")
+            self.p1.place(x=160, y=300)
+
+                
+
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            #self.bt_enter.bind("<Button-1>", self.comandos)
+
+                
+            janela.config(bg="black")
+            janela.geometry("900x450+200+100")
+            janela.resizable(width=False, height=False)
+            janela.title("Debian Server")
+            janela.mainloop()
+
+     
 
     
         
