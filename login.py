@@ -78,12 +78,20 @@ class Tela:
                 self.linuxE = Entry(janela2)
                 self.linuxE["font"] = ("Lucida console", "18")
                 self.linuxE.config(bg="black", foreground="limegreen")
-                self.linuxE.place(x=235, y=10, width=640)
+                self.linuxE.place(x=220, y=10, width=640)
 
-                self.p1 = Label(janela2, text="Digite o comando para ir para \n\n a raiz do sistema")
+                self.p1 = Label(janela2, text="Digite o comando para ir \n\npara a raiz do sistema")
                 self.p1["font"] = ("Lucida console", "27")
-                self.p1.config(bg="#1C1C1C", foreground="red")
-                self.p1.place(x=120, y=310)
+                self.p1.config(bg="#1C1C1C", foreground="RED")
+                self.p1.place(x=160, y=300)
+
+                
+
+                self.bt_enter = Button(janela2, text=">")
+                self.bt_enter["font"] = ("Lucida console", "18")
+                self.bt_enter.config(bg="green", foreground="white")
+                self.bt_enter.place(x=865, y=10, width=30, height=30)
+                self.bt_enter.bind("<Button-1>", self.comandos)
 
                 
                 janela2.config(bg="black")
@@ -97,6 +105,41 @@ class Tela:
             messagebox.showerror("Erro ao acessar", "Usuário ou senha inválidos.")
             self.senhaE.delete(0, "end")
             self.usuarioE.delete(0, "end")
+
+    def comandos(self, event):
+
+        comando = self.linuxE.get()
+        if(comando) == "cd /":
+            janela2.destroy()
+            janela3 = Tk()
+            self.lb = Label(janela3, text="root@debian:~$")
+            self.lb["font"] = ("Lucida console", "18")
+            self.lb.config(bg="black", foreground="white")
+            self.lb.place(x=5, y=10)
+
+            self.linuxE = Entry(janela3)
+            self.linuxE["font"] = ("Lucida console", "18")
+            self.linuxE.config(bg="black", foreground="limegreen")
+            self.linuxE.place(x=220, y=10, width=640)
+
+            self.p1 = Label(janela3, text="Digite o comando para ir \n\npara a raiz do sistema")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.config(bg="#1C1C1C", foreground="RED")
+            self.p1.place(x=160, y=300)
+
+                
+
+            self.bt_enter = Button(janela3, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comandos)
+            janela3.config(bg="black")
+            janela3.geometry("900x450+200+100")
+            janela3.resizable(width=False, height=False)
+            janela3.mainloop()
+            self.p1.config(janela2, text="Crie uma pasta com o nome de 'Hardware'")
+        
         
     def criar_conta(self, event):
 
@@ -192,4 +235,5 @@ janela = Tk()
 Tela(janela)
 janela.geometry("800x450+200+100")
 janela.title("CJ Systems - Login")
+janela.resizable(width=False, height=False)
 janela.mainloop()
