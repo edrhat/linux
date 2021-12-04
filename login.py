@@ -69,7 +69,26 @@ class Tela:
                 self.senhaE.delete(0, "end")
                 self.usuarioE.delete(0, "end")
                 janela2 = Tk()
-            
+
+                self.lb = Label(janela2, text="root@debian:~$")
+                self.lb["font"] = ("Lucida console", "18")
+                self.lb.config(bg="black", foreground="white")
+                self.lb.place(x=5, y=10)
+
+                self.linuxE = Entry(janela2)
+                self.linuxE["font"] = ("Lucida console", "18")
+                self.linuxE.config(bg="black", foreground="limegreen")
+                self.linuxE.place(x=235, y=10, width=640)
+
+                self.p1 = Label(janela2, text="Digite o comando para ir para \n\n a raiz do sistema")
+                self.p1["font"] = ("Lucida console", "27")
+                self.p1.config(bg="#1C1C1C", foreground="red")
+                self.p1.place(x=120, y=310)
+
+                
+                janela2.config(bg="black")
+                janela2.geometry("900x450+200+100")
+                janela2.resizable(width=False, height=False)
                 janela2.mainloop()
 
                 
