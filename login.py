@@ -329,7 +329,7 @@ class Tela:
             self.linuxE = Entry(janela)
             self.linuxE["font"] = ("Lucida console", "18")
             self.linuxE.config(bg="black", foreground="limegreen")
-            self.linuxE.place(x=280, y=10, width=570)
+            self.linuxE.place(x=260, y=10, width=570)
             
             self.bt_enter.place_forget()
             self.bt_enter = Button(janela, text=">")
@@ -357,12 +357,12 @@ class Tela:
             self.p1["font"] = ("Lucida console", "27")
             self.p1.place(x=40, y=300)
 
-            self.linuxE.place(x=280, y=10, width=520)
+            self.linuxE.place(x=400, y=10, width=480)
 
             self.bt_enter.place_forget()
             self.bt_enter = Button(janela, text=">")
             self.bt_enter["font"] = ("Lucida console", "18")
-            self.bt_enter.config(bg="green", foreground="purble")
+            self.bt_enter.config(bg="green", foreground="white")
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando12)
 
