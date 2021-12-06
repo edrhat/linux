@@ -1,6 +1,7 @@
 from tkinter import *
 import DataBase
 from tkinter import messagebox
+import time
 
 class Tela:
 
@@ -63,67 +64,72 @@ class Tela:
 
         verifica = DataBase.cursor.fetchone()
 
-        
-        if(u in verifica) and (s in verifica):
+        try:
+            if(u in verifica) and (s in verifica):
 
 
-            self.img.place_forget()
+                self.img.place_forget()
 
             
             
-            self.lb_usuario.place_forget()
+                self.lb_usuario.place_forget()
 
         
-            self.usuarioE.place_forget()
+                self.usuarioE.place_forget()
 
         
-            self.lb_senha.place_forget()
+                self.lb_senha.place_forget()
 
         
-            self.senhaE.place_forget()
+                self.senhaE.place_forget()
 
         
-            self.bt_acessar.place_forget()
+                self.bt_acessar.place_forget()
         
 
            
-            self.bt_criar.place_forget()
+                self.bt_criar.place_forget()
+                messagebox.showinfo("TESTE DE DESEMPENHO", "Bem-vindo {}".format(u))
+    
+                self.lb = Label(janela, text="root@debian:~$")
+                self.lb["font"] = ("Lucida console", "18")
+                self.lb.config(bg="black", foreground="white")
+                self.lb.place(x=5, y=10)
 
-            self.lb = Label(janela, text="root@debian:~$")
-            self.lb["font"] = ("Lucida console", "18")
-            self.lb.config(bg="black", foreground="white")
-            self.lb.place(x=5, y=10)
+                self.linuxE = Entry(janela)
+                self.linuxE["font"] = ("Lucida console", "18")
+                self.linuxE.config(bg="black", foreground="limegreen")
+                self.linuxE.place(x=220, y=10, width=640)
 
-            self.linuxE = Entry(janela)
-            self.linuxE["font"] = ("Lucida console", "18")
-            self.linuxE.config(bg="black", foreground="limegreen")
-            self.linuxE.place(x=220, y=10, width=640)
-
-            self.p1 = Label(janela, text="Digite o comando para ir \n\npara a raiz do sistema")
-            self.p1["font"] = ("Lucida console", "27")
-            self.p1.config(bg="#1C1C1C", foreground="RED")
-            self.p1.place(x=160, y=300)
-
-                
-
-            self.bt_enter = Button(janela, text=">")
-            self.bt_enter["font"] = ("Lucida console", "18")
-            self.bt_enter.config(bg="green", foreground="white")
-            self.bt_enter.place(x=865, y=10, width=30, height=30)
-            self.bt_enter.bind("<Button-1>", self.comando1)
+                self.p1 = Label(janela, text="Digite o comando para ir \n\npara a raiz do sistema")
+                self.p1["font"] = ("Lucida console", "27")
+                self.p1.config(bg="#1C1C1C", foreground="RED")
+                self.p1.place(x=160, y=300)
 
                 
-            janela.config(bg="black")
-            janela.geometry("900x450+200+100")
-            janela.resizable(width=False, height=False)
-            janela.title("Debian Server")
-            janela.mainloop()
+
+                self.bt_enter = Button(janela, text=">")
+                self.bt_enter["font"] = ("Lucida console", "18")
+                self.bt_enter.config(bg="green", foreground="white")
+                self.bt_enter.place(x=865, y=10, width=30, height=30)
+                self.bt_enter.bind("<Button-1>", self.comando1)
+
+                
+                janela.config(bg="black")
+                janela.geometry("900x450+200+100")
+                janela.resizable(width=False, height=False)
+                janela.title("Debian Server")
+                janela.mainloop()
+                
+        except:
+            messagebox.showwarning("Dados inexistente","Usuário ou senha incorretos.")
 
     def comando1(self, event):
 
         c = self.linuxE.get()
+        u = self.usuarioE.get()
         if(c) == "cd /":
-            #messagebox.showinfo("Comando correto", "ORGULHO DA PROFISSON.")
+            
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
             self.p1 = Label(janela, text="Crie um diretório com o nome de\n\n 'Hardware'")
@@ -137,6 +143,13 @@ class Tela:
             self.bt_enter.config(bg="green", foreground="white")
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando2)
+            
+        else:
+         
+            
+            self.linuxE.config(bg="black")
+            
+            
 
     def comando2(self, event):
 
@@ -281,7 +294,7 @@ class Tela:
           
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
-            self.p1 = Label(janela, text="Logue com o usuário 'suporte'")
+            self.p1 = Label(janela, text="Logue como usuário 'suporte'")
             self.p1.config(bg="#1C1C1C", foreground="lightgrey")
             self.p1["font"] = ("Lucida console", "27")
             self.p1.place(x=10, y=300)
@@ -316,7 +329,7 @@ class Tela:
             self.linuxE = Entry(janela)
             self.linuxE["font"] = ("Lucida console", "18")
             self.linuxE.config(bg="black", foreground="limegreen")
-            self.linuxE.place(x=320, y=10, width=500)
+            self.linuxE.place(x=280, y=10, width=570)
             
             self.bt_enter.place_forget()
             self.bt_enter = Button(janela, text=">")
@@ -339,7 +352,35 @@ class Tela:
 
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
-            self.p1 = Label(janela, text="Acesse a pasta pessoal do usuário \n\n'suporte'")
+            self.p1 = Label(janela, text="Logue como usuário 'root'")
+            self.p1.config(bg="#1C1C1C", foreground="lightgrey")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=40, y=300)
+
+            self.linuxE.place(x=280, y=10, width=520)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="purble")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando12)
+
+    def comando12(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "su root" or (c) == "sudo su":
+            #messagebox.showinfo("Comando correto", "Logado como 'suporte'")
+
+            self.lb.place_forget()
+            self.lb = Label(janela, text="suporte@debian:/home/suporte")
+            self.lb["font"] = ("Lucida console", "18")
+            self.lb.config(bg="black", foreground="lightblue")
+            self.lb.place(x=5, y=10)
+
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Delete o usuário 'suporte'")
             self.p1.config(bg="#1C1C1C", foreground="lightgrey")
             self.p1["font"] = ("Lucida console", "27")
             self.p1.place(x=40, y=300)
@@ -349,7 +390,9 @@ class Tela:
             self.bt_enter["font"] = ("Lucida console", "18")
             self.bt_enter.config(bg="green", foreground="white")
             self.bt_enter.place(x=865, y=10, width=30, height=30)
-            self.bt_enter.bind("<Button-1>", self.comando9)
+            self.bt_enter.bind("<Button-1>", self.comando12)
+
+     
 
 
   
