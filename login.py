@@ -2,7 +2,8 @@ from tkinter import *
 import DataBase
 from tkinter import messagebox
 import time
-
+global pontos
+pontos = 200
 class Tela:
 
     def __init__(self, master):
@@ -114,7 +115,7 @@ class Tela:
                 self.bt_enter.place(x=865, y=10, width=30, height=30)
                 self.bt_enter.bind("<Button-1>", self.comando1)
 
-                
+              
                 janela.config(bg="black")
                 janela.geometry("900x450+200+100")
                 janela.resizable(width=False, height=False)
@@ -126,9 +127,13 @@ class Tela:
 
     def comando1(self, event):
 
+        
         c = self.linuxE.get()
         u = self.usuarioE.get()
         if(c) == "cd /":
+
+            global pontos
+            pontos = pontos+10
             
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
@@ -143,18 +148,21 @@ class Tela:
             self.bt_enter.config(bg="green", foreground="white")
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando2)
-            
+
         else:
+            pontos = pontos-10
+            
+   
          
-            
-            self.linuxE.config(bg="black")
-            
             
 
     def comando2(self, event):
 
         c = self.linuxE.get()
         if(c) == "mkdir Hardware":
+            
+           
+           
             #messagebox.showinfo("Comando correto", "CONTINUE ASSIM.")
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
@@ -169,11 +177,16 @@ class Tela:
             self.bt_enter.config(bg="green", foreground="white")
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando3)
+        else:
+            
+            pontos = pontos-10
 
     def comando3(self, event):
 
         c = self.linuxE.get()
         if(c) == "cd Hardware":
+            global pontos
+            pontos = pontos+10
             #messagebox.showinfo("Comando correto", "DESSE JEITO NEM A NASA AGUENTA.")
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
@@ -189,12 +202,18 @@ class Tela:
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando4)
 
+
+        else:
+            
+            pontos = pontos-10
     
 
     def comando4(self, event):
 
         c = self.linuxE.get()
         if(c) == "ls":
+            global pontos
+            pontos = pontos+10
             #messagebox.showinfo("Comando correto", "ESTÃO DIZENDO QUE ZUCKERBERG É UM BEBEZINHO PERTO DE VOCÊ.")
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
@@ -210,10 +229,17 @@ class Tela:
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando5)
 
+        else:
+            
+            pontos = pontos-10
+        
+
     def comando5(self, event):
 
         c = self.linuxE.get()
         if(c) == "touch microcamp.txt":
+            global pontos
+            pontos = pontos+10
             #messagebox.showinfo("Comando correto", "OS INTEGRANTES DO 'ANONYMOUS' GRITARAM VIIXIIIII.")
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
@@ -229,10 +255,17 @@ class Tela:
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando6)
 
+        else:
+            
+            pontos = pontos-10
+        
+
     def comando6(self, event):
 
         c = self.linuxE.get()
         if(c) == "rm microcamp.txt":
+            global pontos
+            pontos = pontos+10
             #messagebox.showinfo("Comando correto", "E JESUS ORDENOU: ABRAM-SE OS TERMINAIS.")
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
@@ -248,10 +281,16 @@ class Tela:
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando7)
 
+        else:
+            
+            pontos = pontos-10
+
     def comando7(self, event):
 
         c = self.linuxE.get()
         if(c) == "cd ..":
+            global pontos
+            pontos = pontos+10
             #messagebox.showinfo("Comando correto", "O PENTÁGONO ESTÁ DE OLHO.")
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
@@ -267,10 +306,16 @@ class Tela:
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando8)
 
+        else:
+            
+            pontos = pontos-10
+
     def comando8(self, event):
 
         c = self.linuxE.get()
         if(c) == "rm -r Hardware":
+            global pontos
+            pontos = pontos+10
             #messagebox.showinfo("Comando correto", "O PENTÁGONO ESTÁ DE OLHO.")
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
@@ -286,10 +331,17 @@ class Tela:
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando9)
 
+        else:
+            
+            pontos = pontos-10
+      
+
     def comando9(self, event):
 
         c = self.linuxE.get()
         if(c) == "adduser suporte":
+            global pontos
+            pontos = pontos+10
             messagebox.showinfo("Comando correto", "Usuário criado com sucesso.")
           
             self.linuxE.delete(0, "end")
@@ -297,7 +349,7 @@ class Tela:
             self.p1 = Label(janela, text="Logue como usuário 'suporte'")
             self.p1.config(bg="#1C1C1C", foreground="lightgrey")
             self.p1["font"] = ("Lucida console", "27")
-            self.p1.place(x=10, y=300)
+            self.p1.place(x=100, y=300)
 
             self.bt_enter.place_forget()
             self.bt_enter = Button(janela, text=">")
@@ -306,10 +358,17 @@ class Tela:
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando10)
 
+        else:
+            
+            pontos = pontos-10
+         
+
     def comando10(self, event):
 
         c = self.linuxE.get()
         if(c) == "su suporte":
+            global pontos
+            pontos = pontos+10
             #messagebox.showinfo("Comando correto", "Logado como 'suporte'")
 
             self.lb.place_forget()
@@ -323,7 +382,7 @@ class Tela:
             self.p1 = Label(janela, text="Acesse a pasta pessoal do usuário \n\n'suporte'")
             self.p1.config(bg="#1C1C1C", foreground="lightgrey")
             self.p1["font"] = ("Lucida console", "27")
-            self.p1.place(x=10, y=300)
+            self.p1.place(x=60, y=300)
 
             self.linuxE.place_forget()
             self.linuxE = Entry(janela)
@@ -338,10 +397,16 @@ class Tela:
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando11)
 
+        else:
+            
+            pontos = pontos-10
+   
     def comando11(self, event):
 
         c = self.linuxE.get()
         if(c) == "cd /home/suporte":
+            global pontos
+            pontos = pontos+10
             #messagebox.showinfo("Comando correto", "Logado como 'suporte'")
 
             self.lb.place_forget()
@@ -355,9 +420,9 @@ class Tela:
             self.p1 = Label(janela, text="Logue como usuário 'root'")
             self.p1.config(bg="#1C1C1C", foreground="lightgrey")
             self.p1["font"] = ("Lucida console", "27")
-            self.p1.place(x=40, y=300)
+            self.p1.place(x=110, y=300)
 
-            self.linuxE.place(x=400, y=10, width=480)
+            self.linuxE.place(x=405, y=10, width=475)
 
             self.bt_enter.place_forget()
             self.bt_enter = Button(janela, text=">")
@@ -365,41 +430,327 @@ class Tela:
             self.bt_enter.config(bg="green", foreground="white")
             self.bt_enter.place(x=865, y=10, width=30, height=30)
             self.bt_enter.bind("<Button-1>", self.comando12)
+
+        else:
+            
+            pontos = pontos-10
 
     def comando12(self, event):
 
         c = self.linuxE.get()
         if(c) == "su root" or (c) == "sudo su":
-            #messagebox.showinfo("Comando correto", "Logado como 'suporte'")
+            global pontos
+            pontos = pontos+10
 
-            self.lb.place_forget()
-            self.lb = Label(janela, text="suporte@debian:/home/suporte")
+            self.lb = Label(janela, text="root@debian:~$")
             self.lb["font"] = ("Lucida console", "18")
-            self.lb.config(bg="black", foreground="lightblue")
+            self.lb.config(bg="black", foreground="white")
             self.lb.place(x=5, y=10)
 
+            self.linuxE = Entry(janela)
+            self.linuxE["font"] = ("Lucida console", "18")
+            self.linuxE.config(bg="black", foreground="limegreen")
+            self.linuxE.place(x=220, y=10, width=640)
+
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Exclua o usuário 'suporte'")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.config(bg="#1C1C1C", foreground="RED")
+            self.p1.place(x=110, y=300)
+
+            self.linuxE.delete(0, "end")  
+
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando13)
+
+
+        else:
+            
+            pontos = pontos-10
+            
+
+
+    
+    def comando13(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "userdel suporte":
+            global pontos
+            pontos = pontos+10
+            #messagebox.showinfo("Comando correto", "Usuário criado com sucesso.")
+          
+
+            self.lb = Label(janela, text="root@debian:~$")
+            self.lb["font"] = ("Lucida console", "18")
+            self.lb.config(bg="black", foreground="white")
+            self.lb.place(x=5, y=10)
+
+            self.linuxE.delete(0, "end")  
+
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Atualize os repositórios locais")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.config(bg="#1C1C1C", foreground="RED")
+            self.p1.place(x=70, y=300)
+
+            
+
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando14)
+
+        else:
+            
+            pontos = pontos-10
+   
+    def comando14(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "apt-get update":
+            global pontos
+            pontos = pontos+10
+            #messagebox.showinfo("Comando correto", "Usuário criado com sucesso.")
+          
+            
+
+            self.lb = Label(janela, text="root@debian:~$")
+            self.lb["font"] = ("Lucida console", "18")
+            self.lb.config(bg="black", foreground="white")
+            self.lb.place(x=5, y=10)
+
+            self.linuxE.delete(0, "end")    
+
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Instale o pacote 'net-tools'")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.config(bg="#1C1C1C", foreground="red")
+            self.p1.place(x=100, y=300)
+
+             
+
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando15)
+
+        else:
+            
+            pontos = pontos-10
+            
+    def comando15(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "apt-get install net-tools" or (c) == "apt install net-tools":
+            global pontos
+            pontos = pontos+10
+            #messagebox.showinfo("Comando correto", "Usuário criado com sucesso.")
+          
             self.linuxE.delete(0, "end")
             self.p1.place_forget()
-            self.p1 = Label(janela, text="Delete o usuário 'suporte'")
+            self.p1 = Label(janela, text="Instale o pacote 'tkinter'")
             self.p1.config(bg="#1C1C1C", foreground="lightgrey")
             self.p1["font"] = ("Lucida console", "27")
-            self.p1.place(x=40, y=300)
+            self.p1.place(x=90, y=300)
+            self.linuxE.delete(0, "end") 
 
             self.bt_enter.place_forget()
             self.bt_enter = Button(janela, text=">")
             self.bt_enter["font"] = ("Lucida console", "18")
             self.bt_enter.config(bg="green", foreground="white")
             self.bt_enter.place(x=865, y=10, width=30, height=30)
-            self.bt_enter.bind("<Button-1>", self.comando12)
+            self.bt_enter.bind("<Button-1>", self.comando16)
 
-     
+       
 
+        else:
+            
+            pontos = pontos-10
+            
+    def comando16(self, event):
 
+        c = self.linuxE.get()
+        if(c) == "apt-get install tkinter" or (c) == "apt install tkinter":
+            global pontos
+            pontos = pontos+10
+            #messagebox.showinfo("Comando correto", "Usuário criado com sucesso.")
+          
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Acesse o diretório 'Downloads'")
+            self.p1.config(bg="#1C1C1C", foreground="lightgrey")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=90, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando17)
+
+        else:
+            
+            pontos = pontos-10
+            
+
+    def comando17(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "cd Downloads":
+            global pontos
+            pontos = pontos+10
+            #messagebox.showinfo("Comando correto", "Usuário criado com sucesso.")
+          
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Descompacte o arquivo 'teste.zip'")
+            self.p1.config(bg="#1C1C1C", foreground="lightgrey")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=100, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando18)
+
+        else:
+            
+            pontos = pontos-10
+         
+
+    def comando18(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "unzip teste.zip":
+            global pontos
+            pontos = pontos+10
+            #messagebox.showinfo("Comando correto", "Usuário criado com sucesso.")
+          
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Acesse a pasta 'teste'")
+            self.p1.config(bg="#1C1C1C", foreground="lightgrey")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=100, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando19)
+
+        else:
+            
+            pontos = pontos-10
+
+    def comando19(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "cd teste":
+            global pontos
+            pontos = pontos+10
+            #messagebox.showinfo("Comando correto", "Usuário criado com sucesso.")
+          
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Execute o arquivo 'cj_microcamp.sh'")
+            self.p1.config(bg="#1C1C1C", foreground="lightgrey")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=70, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando20)
+
+        else:
+            
+            pontos = pontos-10
+ 
+
+    def comando20(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "./cj_microcamp.sh":
+            global pontos
+            pontos = pontos+10
+            #messagebox.showinfo("Comando correto", "Usuário criado com sucesso.")
+          
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Agora dê permissão total ao \n\n arquivo 'cj_microcamp.sh'")
+            self.p1.config(bg="#1C1C1C", foreground="lightgrey")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=50, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando21)
+
+        else:
+            
+            pontos = pontos-10
+   
+
+    def comando21(self, event):
+
+        c = self.linuxE.get()
+        if(c) == "chmod 777 cj_microcamp.sh":
+            global pontos
+            pontos = pontos+10
+            #messagebox.showinfo("Comando correto", "Usuário criado com sucesso.")
+          
+            self.linuxE.delete(0, "end")
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="Desligue o sistema")
+            self.p1.config(bg="#1C1C1C", foreground="lightgrey")
+            self.p1["font"] = ("Lucida console", "27")
+            self.p1.place(x=120, y=300)
+
+            self.bt_enter.place_forget()
+            self.bt_enter = Button(janela, text=">")
+            self.bt_enter["font"] = ("Lucida console", "18")
+            self.bt_enter.config(bg="green", foreground="white")
+            self.bt_enter.place(x=865, y=10, width=30, height=30)
+            self.bt_enter.bind("<Button-1>", self.comando22)
   
 
+        else:
+            
+            pontos = pontos-10
+            
+    def comando22(self, event):
+        
+        c = self.linuxE.get()
+        if(c) == "shutdown -h now":
+            global pontos
+            pontos = pontos+10
+
+            self.p1.place_forget()
+            self.p1 = Label(janela, text="PONTUAÇÃO: {}".format(pontos))
+            self.p1.config(bg="#1C1C1C", foreground="limegreen")
+            self.p1["font"] = ("Lucida console", "30")
+            self.p1.place(x=100, y=300)
+            
 
     
-        
+        else:
+            
+            pontos = pontos-10
         
     def criar_conta(self, event):
 
