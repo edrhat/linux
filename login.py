@@ -3,16 +3,25 @@ import DataBase
 from tkinter import messagebox
 import time
 global pontos
+u = str("tese")
+cj = 0
 pontos = 200
 class Tela:
 
     def __init__(self, master):
 
         #Imagens
+
+        global cj
         cab = PhotoImage(file="cab.png")
         self.img = Label(janela, image=cab)
         self.img.cab = cab
         self.img.place(x=0,y=0)
+
+        cj = PhotoImage(file="cj.png")
+        self.imgcj = Label(janela, image=cj)
+        self.imgcj.cj = cj
+        self.imgcj.place(x=370,y=150)
 
         #rod = PhotoImage(file="rod.png")
         #self.img2 = Label(janela, image=rod)
@@ -68,8 +77,9 @@ class Tela:
         try:
             if(u in verifica) and (s in verifica):
 
-
+                global cj
                 self.img.place_forget()
+                self.imgcj.place_forget()
 
             
             
@@ -88,14 +98,20 @@ class Tela:
                 self.bt_acessar.place_forget()
         
 
-           
+                
                 self.bt_criar.place_forget()
-                messagebox.showinfo("TESTE DE DESEMPENHO", "Bem-vindo {}".format(u))
+                messagebox.showinfo("Simulador", "Bem-vindo {}".format(u))
     
                 self.lb = Label(janela, text="root@debian:~$")
-                self.lb["font"] = ("Lucida console", "18")
+                self.lb["font"] = ("Lucida console", "18", "italic")
                 self.lb.config(bg="black", foreground="white")
                 self.lb.place(x=5, y=10)
+
+
+                self.eu = Label(janela, text="By: Eduardo.CJJ")
+                self.eu["font"] = ("Lucida", "12", "italic")
+                self.eu.config(bg="black", foreground="lime")
+                self.eu.place(x=770, y=420)
 
                 self.linuxE = Entry(janela)
                 self.linuxE["font"] = ("Lucida console", "18")
@@ -220,7 +236,7 @@ class Tela:
             self.p1 = Label(janela, text="Crie um arquivo de texto com \n\n o nome de microcamp")
             self.p1.config(bg="#1C1C1C", foreground="brown")
             self.p1["font"] = ("Lucida console", "27")
-            self.p1.place(x=100, y=300)
+            self.p1.place(x=130, y=300)
 
             self.bt_enter.place_forget()
             self.bt_enter = Button(janela, text=">")
@@ -272,7 +288,7 @@ class Tela:
             self.p1 = Label(janela, text="Volte um diretório")
             self.p1.config(bg="#1C1C1C", foreground="pink")
             self.p1["font"] = ("Lucida console", "27")
-            self.p1.place(x=100, y=300)
+            self.p1.place(x=150, y=300)
 
             self.bt_enter.place_forget()
             self.bt_enter = Button(janela, text=">")
@@ -692,7 +708,7 @@ class Tela:
             self.p1 = Label(janela, text="Agora dê permissão total ao \n\n arquivo 'cj_microcamp.sh'")
             self.p1.config(bg="#1C1C1C", foreground="lightgrey")
             self.p1["font"] = ("Lucida console", "27")
-            self.p1.place(x=50, y=300)
+            self.p1.place(x=100, y=300)
 
             self.bt_enter.place_forget()
             self.bt_enter = Button(janela, text=">")
@@ -719,7 +735,7 @@ class Tela:
             self.p1 = Label(janela, text="Desligue o sistema")
             self.p1.config(bg="#1C1C1C", foreground="lightgrey")
             self.p1["font"] = ("Lucida console", "27")
-            self.p1.place(x=120, y=300)
+            self.p1.place(x=160, y=300)
 
             self.bt_enter.place_forget()
             self.bt_enter = Button(janela, text=">")
@@ -739,12 +755,10 @@ class Tela:
         if(c) == "shutdown -h now":
             global pontos
             pontos = pontos+10
+            
 
-            self.p1.place_forget()
-            self.p1 = Label(janela, text="PONTUAÇÃO: {}".format(pontos))
-            self.p1.config(bg="#1C1C1C", foreground="limegreen")
-            self.p1["font"] = ("Lucida console", "30")
-            self.p1.place(x=100, y=300)
+            messagebox.showinfo("DESAFIO CONCLUÍDO!", "Muito bom, você completou o desafio! CONTINUE ASSIM, E NEM A NASA VAI TE SEGURAR! ")
+            
             
 
     
@@ -845,6 +859,7 @@ class Tela:
 janela = Tk()
 Tela(janela)
 janela.geometry("800x450+200+100")
-janela.title("CJ Systems - Login")
+janela.title("SIMULADOR LINUX - MC Hortolândia")
 janela.resizable(width=False, height=False)
+janela.iconbitmap("mc.ico")
 janela.mainloop()
